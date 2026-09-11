@@ -1,4 +1,5 @@
 # CS527 Lab 5 — Mini-Computer / OS Simulator
+
 ## Complete Project Status, Architecture, Data Flow, Components, and AI Handoff
 
 > **Purpose of this file:** This README is the single source of truth for the current Lab 5 project.  
@@ -1720,41 +1721,6 @@ object files
    v
 simulator
 ```
-
----
-
-# 38. Windows PowerShell Important Note
-
-Bash supports:
-
-```bash
-./simulator < commands_parallel.txt
-```
-
-PowerShell does **not** use `<` in the same way for stdin redirection.
-
-In PowerShell use:
-
-```powershell
-Get-Content commands_parallel.txt | .\simulator.exe
-```
-
-Similarly:
-
-```powershell
-Get-Content commands_basic.txt | .\simulator.exe
-```
-
-Therefore, if working in Windows PowerShell, use:
-
-```powershell
-make clean
-make
-Get-Content commands_basic.txt | .\simulator.exe
-Get-Content commands_parallel.txt | .\simulator.exe
-```
-
-The files `commands_basic.txt` and `commands_parallel.txt` are not included in the currently inspected project archive. Add them if they are part of the required submission/test setup.
 
 ---
 

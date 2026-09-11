@@ -1,0 +1,15 @@
+% CS527 Vector Addition of Two Arrays
+% Array A at address 4 (8 elements)
+% Array B at address 36 (8 elements)
+% Array C (Result) at address 68 (8 elements)
+
+x1 = 4        % address of Array A
+x2 = 36       % address of Array B
+x3 = 68       % address of Result Array C
+
+v1 = [x1]     % vector load 8 elements from Array A into v1
+v2 = [x2]     % vector load 8 elements from Array B into v2
+v3 = v1 + v2  % parallel vector addition: v3[i] = v1[i] + v2[i]
+[x3] = v3     % vector store 8 elements from v3 into memory at x3
+
+print x3      % print pointer to log

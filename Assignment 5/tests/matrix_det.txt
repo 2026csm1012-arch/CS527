@@ -1,0 +1,61 @@
+% CS527 Lab Program 3: Determinant of a 3x3 Matrix
+% Matrix elements stored row-wise:
+% [ a b c ]   a: addr 4,  b: addr 8,  c: addr 12
+% [ d e f ]   d: addr 16, e: addr 20, f: addr 24
+% [ g h i ]   g: addr 28, h: addr 32, i: addr 36
+%
+% Formula:
+% det = a*(e*i - f*h) - b*(d*i - f*g) + c*(d*h - e*g)
+
+% Load row 1
+x1 = 4
+x2 = [x1]         % a
+x3 = 8
+x4 = [x3]         % b
+x5 = 12
+x6 = [x5]         % c
+
+% Load row 2
+x7 = 16
+x8 = [x7]         % d
+x9 = 20
+x10 = [x9]        % e
+x11 = 24
+x12 = [x11]       % f
+
+% Load row 3
+x13 = 28
+x14 = [x13]       % g
+x15 = 32
+x16 = [x15]       % h
+x17 = 36
+x18 = [x17]       % i
+
+% Term 1: a * (e*i - f*h)
+x20 = x10 * x18   % e*i
+x21 = x12 * x16   % f*h
+x22 = x20 - x21   % e*i - f*h
+x23 = x2 * x22    % a * (e*i - f*h)
+
+% Term 2: b * (d*i - f*g)
+x24 = x8 * x18    % d*i
+x25 = x12 * x14   % f*g
+x26 = x24 - x25   % d*i - f*g
+x27 = x4 * x26    % b * (d*i - f*g)
+
+% Term 3: c * (d*h - e*g)
+x28 = x8 * x16    % d*h
+x29 = x10 * x14   % e*g
+x30 = x28 - x29   % d*h - e*g
+x31 = x6 * x30    % c * (d*h - e*g)
+
+% Combine: det = Term 1 - Term 2 + Term 3
+x40 = x23 - x27
+x41 = x40 + x31
+
+% Print determinant
+print x41
+
+% Store determinant to address 200
+x50 = 200
+[x50] = x41

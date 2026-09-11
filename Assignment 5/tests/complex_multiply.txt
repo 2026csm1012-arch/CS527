@@ -1,0 +1,38 @@
+% CS527 Lab Program 2: Multiply Two Complex Numbers
+% Z1 = A + Bi (A at addr 4, B at addr 8)
+% Z2 = C + Di (C at addr 12, D at addr 16)
+% Formula:
+% Real part      = (A * C) - (B * D)
+% Imaginary part = (A * D) + (B * C)
+
+x1 = 4
+x2 = [x1]        % load A
+
+x3 = 8
+x4 = [x3]        % load B
+
+x5 = 12
+x6 = [x5]        % load C
+
+x7 = 16
+x8 = [x7]        % load D
+
+% Compute Real Part: AC - BD
+x10 = x2 * x6    % AC
+x11 = x4 * x8    % BD
+x12 = x10 - x11  % Real = AC - BD
+
+% Compute Imaginary Part: AD + BC
+x13 = x2 * x8    % AD
+x14 = x4 * x6    % BC
+x15 = x13 + x14  % Imag = AD + BC
+
+% Print results to console and log file
+print x12        % print Real part
+print x15        % print Imaginary part
+
+% Store results in memory (addresses 200 and 204)
+x20 = 200
+[x20] = x12
+x21 = 204
+[x21] = x15

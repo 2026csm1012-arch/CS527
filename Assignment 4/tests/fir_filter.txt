@@ -1,0 +1,72 @@
+% CS527 Vector FIR Filter Program
+% Address 0: Size of array N (e.g. 16)
+% Address 4: 8 Weight values (32 bytes)
+% Address 36: Input array (4N bytes)
+% Address 256 (0x100): Filter outputs
+
+x1 = 4        % pointer to weights
+v0 = [x1]     % load 8 filter weights into vector register v0
+
+x10 = 0       % k = 0 (output index)
+x11 = 8       % number of outputs (N - 8 = 16 - 8 = 8)
+x12 = 36      % base address of input array
+x13 = 256     % destination address for outputs (0x100)
+
+.fir_loop
+x20 = x10 - x11 % compare k with (N - 8)
+BEQ .fir_done   % if k == (N - 8), exit loop
+
+x14 = x12       % current input address = base + k*4
+v1 = [x14]      % load 8 input elements input[k..k+7] into v1
+v2 = v1 * v0    % parallel multiply: v2[i] = input[k+i] * weight[i]
+
+% Write products to scratch space (address 128) to accumulate scalar sum
+x15 = 128
+[x15] = v2
+
+% Accumulate sum of 8 products
+x16 = 128
+x30 = 0       % sum = 0
+
+x31 = [x16]
+x30 = x30 + x31
+x16 = x16 + 4
+
+x31 = [x16]
+x30 = x30 + x31
+x16 = x16 + 4
+
+x31 = [x16]
+x30 = x30 + x31
+x16 = x16 + 4
+
+x31 = [x16]
+x30 = x30 + x31
+x16 = x16 + 4
+
+x31 = [x16]
+x30 = x30 + x31
+x16 = x16 + 4
+
+x31 = [x16]
+x30 = x30 + x31
+x16 = x16 + 4
+
+x31 = [x16]
+x30 = x30 + x31
+x16 = x16 + 4
+
+x31 = [x16]
+x30 = x30 + x31
+
+% Write output[k] = sum
+[x13] = x30
+print x30     % print filtered output value
+
+x13 = x13 + 4 % next output location
+x12 = x12 + 4 % advance input window
+x10 = x10 + 1 % k++
+BAL .fir_loop
+
+.fir_done
+print x10

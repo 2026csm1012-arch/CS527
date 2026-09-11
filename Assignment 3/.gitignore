@@ -1,0 +1,10 @@
+# Build artifacts
+*.o
+*.exe
+simulator
+simulator.exe
+
+# Runtime generated dumps and logs
+*.byte
+!tests/*.byte
+simulation.log

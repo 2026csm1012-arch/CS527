@@ -1,0 +1,7 @@
+tests/sum_n_fixed.txt
+tests/complex_multiply.txt
+tests/matrix_det.txt
+tests/sum_arrays_runtime.txt
+tests/fir_filter.txt
+status
+exit

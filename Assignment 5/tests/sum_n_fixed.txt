@@ -1,0 +1,20 @@
+% CS527 Lab Program 1: Sum of N numbers where N is fixed at program time
+% N is fixed as 10 (sum of numbers 1 to 10 = 55)
+
+x1 = 10      % N = 10
+x2 = 0       % sum = 0
+x3 = 1       % counter / current number = 1
+x4 = 11      % stop condition (N + 1 = 11)
+
+.sum_loop
+x10 = x3 - x4    % check if counter == 11
+BEQ .done
+
+x2 = x2 + x3     % sum = sum + counter
+x3 = x3 + 1      % counter++
+BAL .sum_loop
+
+.done
+print x2         % output the calculated sum (55 in hex is 0x37)
+x20 = 200        % store sum at data memory address 200
+[x20] = x2

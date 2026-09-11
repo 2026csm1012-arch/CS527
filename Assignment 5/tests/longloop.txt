@@ -1,0 +1,10 @@
+% Long-running loop, used only to demonstrate true multi-core overlap
+x1 = 0
+x2 = 200
+.loop
+x1 = x1 + 1
+x3 = x2 - x1
+BEQ .done
+BAL .loop
+.done
+print x1

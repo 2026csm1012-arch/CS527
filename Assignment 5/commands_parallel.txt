@@ -1,0 +1,7 @@
+tests/longloop.txt
+tests/longloop.txt
+tests/longloop.txt
+tests/longloop.txt
+tests/longloop.txt
+status
+exit
